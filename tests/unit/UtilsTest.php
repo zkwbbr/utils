@@ -6,6 +6,27 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testHasErrors()
+    {
+        $fields = [
+            'firstName' => '',
+            'lastName'  => ''
+        ];
+
+        $hasErrors = Utils\HasErrors::x($fields);
+
+        $this->assertFalse($hasErrors);
+
+        $fields = [
+            'firstName' => 'dummy error message',
+            'lastName'  => ''
+        ];
+
+        $hasErrors = Utils\HasErrors::x($fields);
+
+        $this->assertTrue($hasErrors);
+    }
+
     public function testInputTag()
     {
         $types = [
