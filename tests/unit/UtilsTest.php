@@ -6,7 +6,7 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
-    public function testPostPulate()
+    public function testPostPulated()
     {
         $fields = [
             'firstName',
