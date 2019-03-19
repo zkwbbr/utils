@@ -19,7 +19,7 @@ class UtilsTest extends TestCase
             'extra'     => 'qux'
         ];
 
-        $newData = Utils\Postpulate::x($fields, $post);
+        $newData = Utils\Postpulated::x($fields, $post);
 
         $this->assertCount(2, $newData);
         $this->assertEquals('foo', $newData['firstName']);
