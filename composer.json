@@ -16,7 +16,8 @@
         }
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "defuse/php-encryption": "^2.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^8"

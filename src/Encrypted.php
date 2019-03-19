@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace Zkwbbr\Utils;
 
-class Encrypt
+class Encrypted
 {
 
     /**
-     * Encrypt data with key
+     * Wrapper for defuse/php-encryption's encrypt method
      *
-     * @param  string $secret data to encrypt
-     * @param  string $key encrption key that must be generated from vendor\bin\generate-defuse-key
-     * @return string encrypted data
+     * Note: $key must be generated from vendor/bin/generate-defuse-key
+     *
+     * @param string $data
+     * @param string $key
+     * @return string
      */
     public static function x(string $data, string $key): string
     {

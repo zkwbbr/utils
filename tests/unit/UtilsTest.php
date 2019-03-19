@@ -6,6 +6,18 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testEncryptAndDecrypt()
+    {
+        $key = 'def00000d640951d2b248dc1d266c50a159b9419db4a0b33eb798937b9a2ad3b3890607a4161c814d6d70294e83efc565a535e12b2b97039a41d4e99ed88aa094ad47133';
+        $data = 'foo';
+
+        $encrypted = Utils\Encrypted::x($data, $key);
+
+        $decrypted = Utils\Decrypted::x($encrypted, $key);
+
+        $this->assertEquals($data, $decrypted);
+    }
+
     public function testFilesFromDirectory()
     {
         $dir = __DIR__ . '/testDir/';
