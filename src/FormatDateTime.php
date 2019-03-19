@@ -10,7 +10,7 @@ class FormatDateTime
     /**
      * Format datetime string.
      *
-     * Supported formats:
+     * Supported $dateStamp formats:
      * - YYYY-MM-DD HH:MM:SS
      * - YYYY-MM-DD
      * - MM/DD/YYYY

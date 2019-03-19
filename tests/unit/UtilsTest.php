@@ -6,24 +6,38 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testFormatDateTime()
+    {
+        $dateStamp = '2015-01-02 14:01:02';
+        $actual = Utils\FormatDateTime::x($dateStamp, 'm d Y H:i:s');
+        $expected = '01 02 2015 14:01:02';
+        $this->assertEquals($expected, $actual);
+
+        $dateStamp = '2015-01-02';
+        $actual = Utils\FormatDateTime::x($dateStamp, 'm d Y');
+        $expected = '01 02 2015';
+        $this->assertEquals($expected, $actual);
+
+        $dateStamp = '01/02/2015';
+        $actual = Utils\FormatDateTime::x($dateStamp, 'm d Y');
+        $expected = '01 02 2015';
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testHasErrors()
     {
         $fields = [
             'firstName' => '',
             'lastName'  => ''
         ];
-
         $hasErrors = Utils\HasErrors::x($fields);
-
         $this->assertFalse($hasErrors);
 
         $fields = [
             'firstName' => 'dummy error message',
             'lastName'  => ''
         ];
-
         $hasErrors = Utils\HasErrors::x($fields);
-
         $this->assertTrue($hasErrors);
     }
 
