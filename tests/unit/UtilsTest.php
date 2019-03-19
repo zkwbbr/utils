@@ -6,6 +6,21 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testInputTag()
+    {
+        $types = [
+            'text',
+            'email',
+            'number',
+            ''
+        ];
+
+        foreach ($types as $type) {
+            $tag = Utils\InputTag::x('foo', $type, 'bar');
+            $this->assertEquals('<input type="' . $type . '" name="foo" id="foo" value="bar" />', $tag);
+        }
+    }
+
     public function testPathSegment()
     {
         $path = 'https://example.com/foo/bar';

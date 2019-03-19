@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zkwbbr\Utils;
 
-class Input
+class InputTag
 {
 
     /**
