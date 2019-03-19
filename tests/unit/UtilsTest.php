@@ -6,6 +6,20 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testFilesFromDirectory()
+    {
+        $dir = __DIR__ . '/testDir/';
+
+        $files = Utils\FilesFromDirectory::x($dir);
+        $this->assertCount(3, $files);
+
+        $regex = '~testFile_1_~';
+        $files = Utils\FilesFromDirectory::x($dir, $regex);
+        $this->assertCount(2, $files);
+        $this->assertEquals('testFile_1_1.txt', $files[0]);
+        $this->assertEquals('testFile_1_2.txt', $files[1]);
+    }
+
     public function testFormatDateTime()
     {
         $dateStamp = '2015-01-02 14:01:02';

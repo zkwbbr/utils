@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace Zkwbbr\Utils;
 
-class FilterDirectory
+class FilesFromDirectory
 {
+
     /**
-     *  Return an array of files inside $dir, filtered by $needle using regex
+     *  Return an array of files inside $dir, filtered by $regex
      *
      * @param string $dir
-     * @param string $needle
+     * @param string $regex
      * @return array
      */
-    public static function x(string $dir, string $needle = null): array
+    public static function x(string $dir, string $regex = null): array
     {
         $files = [];
 
         if (($handle = opendir($dir)) !== false) {
 
             while (($file = readdir($handle)) !== false) {
-                if ($needle) {
-                    if (preg_match($needle, $file)) {
+                if ($regex) {
+                    if (preg_match($regex, $file)) {
                         $files[] = $file;
                     }
-
                 } else {
                     if ($file != '.' && $file != '..' && $file != 'Thumbs.db') {
                         $files[] = $file;
@@ -38,5 +38,4 @@ class FilterDirectory
 
         return $files;
     }
-
 }
