@@ -14,7 +14,7 @@ class FilesFromDirectory
      * @param string $regex
      * @return array
      */
-    public static function x(string $dir, string $regex = null): array
+    public static function x(string $dir, ?string $regex = null): array
     {
         $files = [];
 
