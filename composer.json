@@ -1,0 +1,24 @@
+{
+    "name": "zkwbbr/utils",
+    "type": "library",
+    "description": "Several utility functions placed in classes so they can be auto-loaded",
+    "keywords": ["php", "utilities"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zkwbbr/utils contributors",
+            "homepage": "https://github.com/zkwbbr/utils/graphs/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Zkwbbr\\Utils\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
