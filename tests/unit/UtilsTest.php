@@ -11,8 +11,7 @@ class UtilsTest extends TestCase
         $types = [
             'text',
             'email',
-            'number',
-            ''
+            'number'
         ];
 
         foreach ($types as $type) {
