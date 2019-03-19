@@ -15,7 +15,7 @@ class AdjustedDateTimeByString
      * @param string $format standard date formats, if null, returns unix timestamp format
      * @return string
      */
-    public static function x(string $srcDateTime, string $adjustment, string $format = null): string
+    public static function x(string $srcDateTime, string $adjustment, ?string $format = null): string
     {
         $srcTimestamp = strtotime($srcDateTime);
         $adjustedTimestamp = strtotime($adjustment, $srcTimestamp);
