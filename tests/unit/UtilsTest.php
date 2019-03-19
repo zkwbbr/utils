@@ -6,6 +6,17 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testPathSegment()
+    {
+        $path = 'https://example.com/foo/bar';
+
+        $segment = Utils\PathSegment::x(0, $path);
+        $this->assertEquals('foo', $segment);
+
+        $segment = Utils\PathSegment::x(1, $path);
+        $this->assertEquals('bar', $segment);
+    }
+
     public function testPostPulated()
     {
         $fields = [
