@@ -6,6 +6,23 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testAdjustedDateTimeByTimeZone()
+    {
+        date_default_timezone_set('UTC');
+
+        $format = 'Y-m-d H:i:s';
+        $srcDateTime = date($format);
+        $newTimezone = 'America/Los_Angeles';
+
+        $actual = Utils\AdjustedDateTimeByTimeZone::x($srcDateTime, $newTimezone, $format);
+
+        $srcTimestamp = strtotime($srcDateTime);
+        $adjustedTimestamp = strtotime('-7 hours', $srcTimestamp);
+        $expected = date($format, $adjustedTimestamp);
+
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testAdjustedDateTimeByString()
     {
         $srcDatetime = '2015-01-02 14:01:02';

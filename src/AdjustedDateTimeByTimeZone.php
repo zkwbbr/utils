@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zkwbbr\Utils;
 
-class AdjustDateTimeByTimeZone
+class AdjustedDateTimeByTimeZone
 {
 
     /**
@@ -15,7 +15,7 @@ class AdjustDateTimeByTimeZone
      * @param string $format
      * @return string
      */
-    public static function x(string $srcDateTime = 'now', string $newTimezone, string $format = 'Y-m-d H:i:s'): string
+    public static function x(string $srcDateTime = 'now', string $newTimezone, string $format): string
     {
         $dateTime = new \DateTime($srcDateTime);
         $newTimezone = new \DateTimeZone($newTimezone);
