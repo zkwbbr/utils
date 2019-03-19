@@ -8,9 +8,12 @@ class FormattedDateTime
 {
 
     /**
-     * Format datetime string
-     *
-     * @param string $dateStamp
+     * Format datetime string like
+     * - YYYY-MM-DD H:i:s
+     * - YYYY-MM-DD
+     * - DD/MM/YYYY
+     * 
+     * @param string $srcDateTime
      * @param string $format
      * @return string
      */

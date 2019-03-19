@@ -8,7 +8,10 @@ class AdjustedDateTimeByString
 {
 
     /**
-     * Wrapper for strtotime
+     * Adjust and format datetime string like
+     * - YYYY-MM-DD H:i:s
+     * - YYYY-MM-DD
+     * - DD/MM/YYYY
      *
      * @param string $srcDateTime
      * @param string $adjustment (e.g., +1 year)
