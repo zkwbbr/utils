@@ -8,20 +8,20 @@ class RandomNumber
 {
 
     /**
-     * Generate random number
+     * Generate random number based on length
      *
      * @param int $length
-     * @return string
+     * @return int
      */
-    public static function x(int $length = 6): string
+    public static function x(int $length = 6): int
     {
 
         $s = '';
 
         for ($i = 1; $i <= $length; $i++) {
-            $s .= random_int(0, $length);
+            $s .= random_int(1, 9);
         }
 
-        return $s;
+        return (int) $s;
     }
 }
