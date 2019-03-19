@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyApp\Utils;
+namespace Zkwbbr\Utils;
 
 class Encrypt
 {
