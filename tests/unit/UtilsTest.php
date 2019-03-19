@@ -6,6 +6,26 @@ use Zkwbbr\Utils;
 class UtilsTest extends TestCase
 {
 
+    public function testPostPulate()
+    {
+        $fields = [
+            'firstName',
+            'lastName'
+        ];
+
+        $post = [
+            'firstName' => 'foo',
+            'lastName'  => 'bar',
+            'extra'     => 'qux'
+        ];
+
+        $newData = Utils\Postpulate::x($fields, $post);
+
+        $this->assertCount(2, $newData);
+        $this->assertEquals('foo', $newData['firstName']);
+        $this->assertEquals('bar', $newData['lastName']);
+    }
+
     public function testRandomNummber()
     {
         $desiredLength = 9;
@@ -15,7 +35,6 @@ class UtilsTest extends TestCase
         $actualLength = strlen($num);
 
         $this->assertIsInt($num);
-
         $this->assertEquals($desiredLength, $actualLength);
     }
 }
