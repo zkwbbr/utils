@@ -15,12 +15,10 @@ class RandomNumber
      */
     public static function x(int $length = 6): int
     {
-
         $s = '';
 
-        for ($i = 1; $i <= $length; $i++) {
+        for ($i = 1; $i <= $length; $i++)
             $s .= random_int(1, 9);
-        }
 
         return (int) $s;
     }

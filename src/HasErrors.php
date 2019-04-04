@@ -17,11 +17,9 @@ class HasErrors
     {
         $hasErrors = false;
 
-        foreach ($fields as $v) {
-            if ($v != null) {
+        foreach ($fields as $v)
+            if ($v != null)
                 $hasErrors = true;
-            }
-        }
 
         return $hasErrors;
     }

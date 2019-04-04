@@ -29,7 +29,6 @@ class FilesFromDirectory
                     if ($file != '.' && $file != '..' && $file != 'Thumbs.db') {
                         $files[] = $file;
                     }
-
                 }
             }
 
