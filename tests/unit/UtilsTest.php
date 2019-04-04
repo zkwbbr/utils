@@ -147,4 +147,25 @@ class UtilsTest extends TestCase
         $this->assertIsInt($num);
         $this->assertEquals($desiredLength, $actualLength);
     }
+
+    public function testRedirectHeaderString()
+    {
+        $link = 'foo/bar/1';
+        $baseUrl = 'http://example.com/';
+        $method = 'refresh';
+        $seconds = 5;
+
+        $actual = Utils\Redirect::getHeaderString($link, $baseUrl);
+        $expected = 'location: ' . $baseUrl . $link;
+        $this->assertEquals($expected, $actual);
+
+        $actual = Utils\Redirect::getHeaderString($link, $baseUrl, $method);
+        $expected = 'refresh: 0; url=' . $baseUrl . $link;
+        $this->assertEquals($expected, $actual);
+
+        $link = 'http://google.com';
+        $actual = Utils\Redirect::getHeaderString($link, $baseUrl, $method, $seconds);
+        $expected = 'refresh: ' . $seconds . '; url=' . $link;
+        $this->assertEquals($expected, $actual);
+    }
 }
