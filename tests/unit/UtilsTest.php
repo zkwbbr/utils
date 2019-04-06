@@ -168,4 +168,17 @@ class UtilsTest extends TestCase
         $expected = 'refresh: ' . $seconds . '; url=' . $link;
         $this->assertEquals($expected, $actual);
     }
+
+    public function testNullifiedArray()
+    {
+        $array = [
+            'foo' => 'hello',
+            'bar' => 'word'
+        ];
+
+        $na = Utils\NullifiedArray::x($array);
+
+        $this->assertEquals($na['foo'], null);
+        $this->assertEquals($na['bar'], null);
+    }
 }
