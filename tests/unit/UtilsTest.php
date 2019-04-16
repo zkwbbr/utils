@@ -212,4 +212,30 @@ class UtilsTest extends TestCase
         $expected = '<a href="' . $link . '" ' . $extra . '>' . $link . '</a>';
         $this->assertEquals($expected, $actual);
     }
+
+    public function testImageTag()
+    {
+        $src = 'foo.jpg';
+        $baseUrl = null;
+        $alt = null;
+        $extra = null;
+        $actual = Utils\ImageTag::x($src, $baseUrl, $alt, $extra);
+        $expected = '<img src="' . $src . '" alt="' . $alt . '" />';
+        $this->assertEquals($expected, $actual);
+
+        $baseUrl = 'http://example.com/images/';
+        $actual = Utils\ImageTag::x($src, $baseUrl, $alt, $extra);
+        $expected = '<img src="' . $baseUrl . $src . '" alt="' . $alt . '" />';
+        $this->assertEquals($expected, $actual);
+
+        $alt = 'bar';
+        $actual = Utils\ImageTag::x($src, $baseUrl, $alt, $extra);
+        $expected = '<img src="' . $baseUrl . $src . '" alt="' . $alt . '" />';
+        $this->assertEquals($expected, $actual);
+
+        $extra = 'height="50"';
+        $actual = Utils\ImageTag::x($src, $baseUrl, $alt, $extra);
+        $expected = '<img src="' . $baseUrl . $src . '" alt="' . $alt . '" ' . $extra . ' />';
+        $this->assertEquals($expected, $actual);
+    }
 }
