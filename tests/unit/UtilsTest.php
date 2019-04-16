@@ -181,4 +181,35 @@ class UtilsTest extends TestCase
         $this->assertEquals($na['foo'], null);
         $this->assertEquals($na['bar'], null);
     }
+
+    public function testAnchorTag()
+    {
+        $link = 'controller/method';
+        $text = 'click here';
+        $baseUrl = null;
+        $extra = null;
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $link . '">' . $text . '</a>';
+        $this->assertEquals($expected, $actual);
+
+        $baseUrl = 'http://example.com/';
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $baseUrl . $link . '">' . $text . '</a>';
+        $this->assertEquals($expected, $actual);
+
+        $link = 'http://google.com';
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $link . '">' . $text . '</a>';
+        $this->assertEquals($expected, $actual);
+
+        $text = null;
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $link . '">' . $link . '</a>';
+        $this->assertEquals($expected, $actual);
+
+        $extra = 'target="_blank"';
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $link . '" ' . $extra . '>' . $link . '</a>';
+        $this->assertEquals($expected, $actual);
+    }
 }
