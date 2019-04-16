@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.3.0
+
+- Add AnchorTag::x() method
+- Add ImageTag::x() method
+
 ## 1.2.0
 
 - Add NullifiedArray::x() method
