@@ -16,7 +16,15 @@ class PathSegment
      */
     public static function x(int $key, string $url): ?string
     {
-        $paths = trim(parse_url($url, PHP_URL_PATH), '/');
+        $parsedUrl = parse_url($url, PHP_URL_PATH);
+
+        if (!$parsedUrl)
+            return null;
+
+        $paths = trim($parsedUrl, '/');
+
+        if (empty($paths))
+            return null;
 
         $paths = explode('/', $paths);
 

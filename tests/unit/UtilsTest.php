@@ -107,6 +107,14 @@ class UtilsTest extends TestCase
 
     public function testPathSegment()
     {
+        $path = 'https://example.com'; // without trailing slash
+        $segment = Utils\PathSegment::x(0, $path);
+        $this->assertNull($segment);
+
+        $path = 'https://example.com/'; // with trailing slash
+        $segment = Utils\PathSegment::x(0, $path);
+        $this->assertNull($segment);
+
         $path = 'https://example.com/foo/bar';
 
         $segment = Utils\PathSegment::x(0, $path);
