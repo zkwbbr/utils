@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use PHPUnit\Framework\TestCase;
 use Zkwbbr\Utils;
 
@@ -150,7 +152,7 @@ class UtilsTest extends TestCase
 
         $num = Utils\RandomNumber::x($desiredLength);
 
-        $actualLength = strlen($num);
+        $actualLength = strlen((string) $num);
 
         $this->assertIsInt($num);
         $this->assertEquals($desiredLength, $actualLength);
