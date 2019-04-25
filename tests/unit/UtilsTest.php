@@ -257,7 +257,30 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testHtmlSpecialCharsArrays()
+    public function testHtmlSpecialCharsArraysOneDimension()
+    {
+        $array = [
+            'foo' => '<b>hello</b>',
+            'bar' => '&',
+            'qux' => '<b>world</b>'
+        ];
+
+        $array = Utils\HtmlSpecialCharsArrays::x($array);
+
+        $actual = $array['foo'];
+        $expected = '&lt;b&gt;hello&lt;/b&gt;';
+        $this->assertEquals($expected, $actual);
+
+        $actual = $array['bar'];
+        $expected = '&amp;';
+        $this->assertEquals($expected, $actual);
+
+        $actual = $array['qux'];
+        $expected = '&lt;b&gt;world&lt;/b&gt;';
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testHtmlSpecialCharsArraysTwoDimensions()
     {
         $arrays = [
             0 => ['foo' => '<b>hello</b>'],
