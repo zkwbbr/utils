@@ -248,4 +248,35 @@ class UtilsTest extends TestCase
         $expected = '<img src="' . $baseUrl . $src . '" alt="' . $alt . '" ' . $extra . ' />';
         $this->assertEquals($expected, $actual);
     }
+
+    public function testHtmlSpecialChars()
+    {
+        $s = '<b>foo</b>';
+        $actual = Utils\HtmlSpecialChars::x($s);
+        $expected = '&lt;b&gt;foo&lt;/b&gt;';
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testHtmlSpecialCharsArrays()
+    {
+        $arrays = [
+            0 => ['foo' => '<b>hello</b>'],
+            1 => ['bar' => '&'],
+            2 => ['qux' => '<b>world</b>']
+        ];
+
+        $arrays = Utils\HtmlSpecialCharsArrays::x($arrays);
+
+        $actual = $arrays[0]['foo'];
+        $expected = '&lt;b&gt;hello&lt;/b&gt;';
+        $this->assertEquals($expected, $actual);
+
+        $actual = $arrays[1]['bar'];
+        $expected = '&amp;';
+        $this->assertEquals($expected, $actual);
+
+        $actual = $arrays[2]['qux'];
+        $expected = '&lt;b&gt;world&lt;/b&gt;';
+        $this->assertEquals($expected, $actual);
+    }
 }
