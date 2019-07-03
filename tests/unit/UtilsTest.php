@@ -313,4 +313,22 @@ class UtilsTest extends TestCase
         $random2 = Utils\RandomReadable::x(5);
         $this->assertNotEquals($random1, $random2);
     }
+
+    public function testRandomReadableAlt()
+    {
+        $random = Utils\RandomReadableAlt::x(5);
+        $length = \mb_strlen($random);
+        $this->assertEquals(5, $length);
+
+        $random1 = Utils\RandomReadableAlt::x(5);
+        $random2 = Utils\RandomReadableAlt::x(5);
+        $this->assertNotEquals($random1, $random2);
+
+        // test if it always returns letters first then numbers second
+        for ($i = 0; $i < 100; $i++) {
+            $random = Utils\RandomReadableAlt::x(5);
+            $this->assertIsString($random[0]);
+            $this->assertIsNumeric($random[1]);
+        }
+    }
 }
