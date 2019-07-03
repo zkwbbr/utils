@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.5.0 - 2019-07-04
+
+### Added
+
+- Add RandomReadable::x() method.
+- Add RandomReadableAlt::x() method.
+
 ## 1.4.1 - 2019-04-25
 
 ### Fixed
