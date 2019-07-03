@@ -302,4 +302,15 @@ class UtilsTest extends TestCase
         $expected = '&lt;b&gt;world&lt;/b&gt;';
         $this->assertEquals($expected, $actual);
     }
+
+    public function testRandomReadable()
+    {
+        $random = Utils\RandomReadable::x(5);
+        $length = \mb_strlen($random);
+        $this->assertEquals(5, $length);
+
+        $random1 = Utils\RandomReadable::x(5);
+        $random2 = Utils\RandomReadable::x(5);
+        $this->assertNotEquals($random1, $random2);
+    }
 }
