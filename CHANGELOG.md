@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.5.1 - 2019-07-07
+
+### Fixed
+
+- Add 'Q' character RandomReadable::x() and RandomReadableAlt::x() method because it's not really hard to read unlike O or 0.
+
 ## 1.5.0 - 2019-07-04
 
 ### Added
