@@ -8,14 +8,14 @@ class RandomReadable
 {
 
     /**
-     * Returns random alpha numeric characters in uppercase without similar looking characters (0,O,Q,I,1)
+     * Returns random alpha numeric characters in uppercase without similar looking characters (0,O,I,1)
      *
      * @param int $length
      * @return string
      */
     public static function x(int $length): string
     {
-        $pool = \explode(',', 'A,B,C,D,E,F,G,H,J,K,L,M,N,P,R,S,T,U,V,W,X,Y,Z,2,3,4,5,6,7,8,9');
+        $pool = \explode(',', 'A,B,C,D,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,U,V,W,X,Y,Z,2,3,4,5,6,7,8,9');
 
         $s = '';
 
