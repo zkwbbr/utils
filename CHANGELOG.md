@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.6.0 - 2020-05-18
+
+### Added
+
+- Add SelectTag::x() method.
+- Add IsArrayAssoc::() method.
+- Add IsArrayMultiAssoc::() method.
+- Add ForcedAssocArray::() method.
+
 ## 1.5.1 - 2019-07-07
 
 ### Fixed

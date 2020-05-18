@@ -5,4 +5,5 @@ vendor/
 public/
 resources/docker/
 nbproject/
+tests/mycoverage/
 .phpunit.result.cache

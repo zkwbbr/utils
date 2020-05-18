@@ -7,8 +7,7 @@ use Zkwbbr\Utils;
 
 class UtilsTest extends TestCase
 {
-
-    public function testAdjustedDateTimeByTimeZone()
+    public function test_AdjustedDateTimeByTimeZone_validData_pass()
     {
         date_default_timezone_set('UTC');
 
@@ -25,7 +24,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testAdjustedDateTimeByString()
+    public function test_AdjustedDateTimeByString_validData_pass()
     {
         $srcDatetime = '2015-01-02 14:01:02';
         $adjustment = '+1 day';
@@ -35,7 +34,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $adjusted);
     }
 
-    public function testEncryptAndDecrypt()
+    public function test_EncryptAndDecrypt_validData_pass()
     {
         $key = 'def00000d640951d2b248dc1d266c50a159b9419db4a0b33eb798937b9a2ad3b3890607a4161c814d6d70294e83efc565a535e12b2b97039a41d4e99ed88aa094ad47133';
         $data = 'foo';
@@ -44,7 +43,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($data, $decrypted);
     }
 
-    public function testFilesFromDirectory()
+    public function test_FilesFromDirectory_validData_pass()
     {
         $dir = __DIR__ . '/testDir/';
 
@@ -58,7 +57,7 @@ class UtilsTest extends TestCase
         $this->assertEquals('testFile_1_2.txt', $files[1]);
     }
 
-    public function testFormattedDateTime()
+    public function test_FormattedDateTime_validData_pass()
     {
         $dateStamp = '2015-01-02 14:01:02';
         $actual = Utils\FormattedDateTime::x($dateStamp, 'm d Y H:i:s');
@@ -76,7 +75,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testHasErrors()
+    public function test_HasErrors_validData_pass()
     {
         $fields = [
             'firstName' => '',
@@ -93,7 +92,7 @@ class UtilsTest extends TestCase
         $this->assertTrue($hasErrors);
     }
 
-    public function testInputTag()
+    public function test_InputTag_validData_pass()
     {
         $types = [
             'text',
@@ -107,7 +106,7 @@ class UtilsTest extends TestCase
         }
     }
 
-    public function testPathSegment()
+    public function test_PathSegment_validData_pass()
     {
         $path = 'https://example.com'; // without trailing slash
         $segment = Utils\PathSegment::x(0, $path);
@@ -126,7 +125,7 @@ class UtilsTest extends TestCase
         $this->assertEquals('bar', $segment);
     }
 
-    public function testPostPulated()
+    public function test_PostPulated_validData_pass()
     {
         $fields = [
             'firstName',
@@ -146,7 +145,7 @@ class UtilsTest extends TestCase
         $this->assertEquals('bar', $newData['lastName']);
     }
 
-    public function testRandomNummber()
+    public function test_RandomNummber_validData_pass()
     {
         $desiredLength = 9;
 
@@ -158,7 +157,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($desiredLength, $actualLength);
     }
 
-    public function testRedirectHeaderString()
+    public function test_RedirectHeaderString_validData_pass()
     {
         $link = 'foo/bar/1';
         $baseUrl = 'http://example.com/';
@@ -179,7 +178,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testNullifiedArray()
+    public function test_NullifiedArray_validData_pass()
     {
         $array = [
             'foo' => 'hello',
@@ -192,7 +191,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($na['bar'], null);
     }
 
-    public function testAnchorTag()
+    public function test_AnchorTag_validData_pass()
     {
         $link = 'controller/method';
         $text = 'click here';
@@ -223,7 +222,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testImageTag()
+    public function test_ImageTag_validData_pass()
     {
         $src = 'foo.jpg';
         $baseUrl = null;
@@ -249,7 +248,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testHtmlSpecialChars()
+    public function test_HtmlSpecialChars_validData_pass()
     {
         $s = '<b>foo</b>';
         $actual = Utils\HtmlSpecialChars::x($s);
@@ -257,7 +256,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testHtmlSpecialCharsArraysOneDimension()
+    public function test_HtmlSpecialCharsArraysOneDimension_validData_pass()
     {
         $array = [
             'foo' => '<b>hello</b>',
@@ -280,7 +279,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testHtmlSpecialCharsArraysTwoDimensions()
+    public function test_HtmlSpecialCharsArraysTwoDimensions_validData_pass()
     {
         $arrays = [
             0 => ['foo' => '<b>hello</b>'],
@@ -303,7 +302,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testRandomReadable()
+    public function testRandomReadable_validData_pass()
     {
         $random = Utils\RandomReadable::x(5);
         $length = \mb_strlen($random);
@@ -314,7 +313,7 @@ class UtilsTest extends TestCase
         $this->assertNotEquals($random1, $random2);
     }
 
-    public function testRandomReadableAlt()
+    public function test_RandomReadableAlt_validData_pass()
     {
         $random = Utils\RandomReadableAlt::x(5);
         $length = \mb_strlen($random);
@@ -331,4 +330,59 @@ class UtilsTest extends TestCase
             $this->assertIsNumeric($random[1]);
         }
     }
+
+    public function test_SelectTag_basicArray_pass()
+    {
+        $array = [
+            'foo',
+            'bar',
+        ];
+
+        $selectTag = Utils\SelectTag::x($array, 'sample');
+
+        // ------------------------------------------------
+
+        $expected = '<select id="sample" name="sample"><option value="">- Select -</option><option value="foo">foo</option><option value="bar">bar</option></select>';
+        $actual = $selectTag;
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function test_SelectTag_multiAssocArray2levels_pass()
+    {
+        $array = [
+            'foo' => ['a', 'b'],
+            'bar' => ['c', 'd']
+        ];
+
+        $selectTag = Utils\SelectTag::x($array, 'sample');
+
+        // ------------------------------------------------
+
+        $expected = '<select id="sample" name="sample"><option value="">- Select -</option><optgroup label="foo"><option value="a">a</option><option value="b">b</option></optgroup><optgroup label="bar"><option value="c">c</option><option value="d">d</option></optgroup></select>';
+        $actual = $selectTag;
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function test_SelectTag_multiAssocArray3levels_pass()
+    {
+        $array = [
+            'Protoss' => [
+                'Gateway'  => ['Zealot', 'Stalker'],
+                'Stargate' => ['Phoenix', 'Carrier']
+            ],
+            'Terran'  => [
+                'Barracks' => ['Marine', 'Marauder'],
+                'Factory'  => ['Seige Tank', 'Thor']
+            ]
+        ];
+
+        $selectTag = Utils\SelectTag::x($array, 'streets');
+
+        // ------------------------------------------------
+
+        $expected = '<select id="streets" name="streets"><option value="">- Select -</option><optgroup label="Protoss"><optgroup label="&nbsp;&nbsp;&nbsp;Gateway"><option value="Zealot">&nbsp;&nbsp;&nbsp;Zealot</option><option value="Stalker">&nbsp;&nbsp;&nbsp;Stalker</option></optgroup><optgroup label="&nbsp;&nbsp;&nbsp;Stargate"><option value="Phoenix">&nbsp;&nbsp;&nbsp;Phoenix</option><option value="Carrier">&nbsp;&nbsp;&nbsp;Carrier</option></optgroup></optgroup><optgroup label="Terran"><optgroup label="&nbsp;&nbsp;&nbsp;Barracks"><option value="Marine">&nbsp;&nbsp;&nbsp;Marine</option><option value="Marauder">&nbsp;&nbsp;&nbsp;Marauder</option></optgroup><optgroup label="&nbsp;&nbsp;&nbsp;Factory"><option value="Seige Tank">&nbsp;&nbsp;&nbsp;Seige Tank</option><option value="Thor">&nbsp;&nbsp;&nbsp;Thor</option></optgroup></optgroup></select>';
+        $actual = $selectTag;
+        $this->assertEquals($expected, $actual);
+    }
+
 }
