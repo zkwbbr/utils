@@ -157,24 +157,69 @@ class UtilsTest extends TestCase
         $this->assertEquals($desiredLength, $actualLength);
     }
 
-    public function test_RedirectHeaderString_validData_pass()
+    /**
+     * The annotation @runInSeparateProcess below is important
+     * See: https://stackoverflow.com/questions/9745080 for more info
+     *
+     * @runInSeparateProcess
+     */
+    public function test_Redirect_usingLocation_pass()
+    {
+        $link = 'foo/bar/1';
+        $baseUrl = 'http://example.com/';
+        $method = 'location';
+        $seconds = 5;
+        $withExit = false;
+
+        // ------------------------------------------------
+
+        Utils\Redirect::x($link, $baseUrl, $method, $seconds, $withExit);
+        $expected = 'location: ' . $baseUrl . $link;
+        $actual = \xdebug_get_headers()[0];
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * The annotation @runInSeparateProcess below is important
+     * See: https://stackoverflow.com/questions/9745080 for more info
+     *
+     * @runInSeparateProcess
+     */
+    public function test_Redirect_usingRefresh_pass()
     {
         $link = 'foo/bar/1';
         $baseUrl = 'http://example.com/';
         $method = 'refresh';
         $seconds = 5;
+        $withExit = false;
 
-        $actual = Utils\Redirect::getHeaderString($link, $baseUrl);
-        $expected = 'location: ' . $baseUrl . $link;
+        // ------------------------------------------------
+
+        Utils\Redirect::x($link, $baseUrl, $method, $seconds, $withExit);
+        $expected = 'refresh: 5; url=' . $baseUrl . $link;
+        $actual = \xdebug_get_headers()[0];
         $this->assertEquals($expected, $actual);
+    }
 
-        $actual = Utils\Redirect::getHeaderString($link, $baseUrl, $method);
-        $expected = 'refresh: 0; url=' . $baseUrl . $link;
-        $this->assertEquals($expected, $actual);
+    /**
+     * The annotation @runInSeparateProcess below is important
+     * See: https://stackoverflow.com/questions/9745080 for more info
+     *
+     * @runInSeparateProcess
+     */
+    public function test_Redirect_toExternalUrl_pass()
+    {
+        $link = 'https://google.com';
+        $baseUrl = null;
+        $method = 'refresh';
+        $seconds = 5;
+        $withExit = false;
 
-        $link = 'http://google.com';
-        $actual = Utils\Redirect::getHeaderString($link, $baseUrl, $method, $seconds);
-        $expected = 'refresh: ' . $seconds . '; url=' . $link;
+        // ------------------------------------------------
+
+        Utils\Redirect::x($link, $baseUrl, $method, $seconds, $withExit);
+        $expected = 'refresh: 5; url=' . $baseUrl . $link;
+        $actual = \xdebug_get_headers()[0];
         $this->assertEquals($expected, $actual);
     }
 
