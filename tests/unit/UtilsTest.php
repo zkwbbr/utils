@@ -92,18 +92,73 @@ class UtilsTest extends TestCase
         $this->assertTrue($hasErrors);
     }
 
-    public function test_InputTag_validData_pass()
+    public function test_InputTagTextAndEmailAndNumberAndPasswordAndHidden_validData_pass()
     {
         $types = [
             'text',
             'email',
-            'number'
+            'number',
+            'password',
+            'hidden'
         ];
 
         foreach ($types as $type) {
-            $tag = Utils\InputTag::x('foo', $type, 'bar');
-            $this->assertEquals('<input type="' . $type . '" name="foo" id="foo" value="bar" />', $tag);
+            $expected = '<input type="' . $type . '" name="foo" id="foo" value="bar" class="extra" />';
+            $actual = Utils\InputTag::x('foo', $type, 'bar', 'class="extra"');
+            $this->assertEquals($expected, $actual);
         }
+    }
+
+    public function test_InputTagSubmitAndButton_validData_pass()
+    {
+        $types = [
+            'submit',
+            'button',
+        ];
+
+        foreach ($types as $type) {
+            $expected = '<input type="' . $type . '" name="foo" value="bar" />';
+            $actual = Utils\InputTag::x('foo', $type, 'bar');
+            $this->assertEquals($expected, $actual);
+        }
+    }
+
+    public function test_InputTagRadioAndCheckbox_validData_pass()
+    {
+        $types = [
+            'radio',
+            'checkbox',
+        ];
+
+        foreach ($types as $type) {
+            $expected = '<input type="' . $type . '" name="foo" id="foo_bar" value="bar" />';
+            $actual = Utils\InputTag::x('foo', $type, 'bar');
+            $this->assertEquals($expected, $actual);
+        }
+    }
+
+    public function test_InputTagTextarea_validData_pass()
+    {
+        $expected = '<textarea name="foo" id="foo">bar</textarea>';
+        $actual = Utils\InputTag::x('foo', 'textarea', 'bar');
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function test_InputTagFile_validData_pass()
+    {
+        $expected = '<input type="file" name="foo" id="foo" />';
+        $actual = Utils\InputTag::x('foo', 'file');
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function test_InputTag_postAlreadySet_pass()
+    {
+        $_POST['foo'] = 'bar';
+
+        $expected = '<input type="text" name="foo" id="foo" value="bar" />';
+        $actual = Utils\InputTag::x('foo');
+
+        $this->assertEquals($expected, $actual);
     }
 
     public function test_PathSegment_validData_pass()
