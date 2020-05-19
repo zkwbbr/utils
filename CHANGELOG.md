@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.6.0 - 2020-05-18
+## 2.0.0 - 2020-05-19
 
 ### Added
 
@@ -8,6 +8,10 @@
 - Add IsArrayAssoc::() method.
 - Add IsArrayMultiAssoc::() method.
 - Add ForcedAssocArray::() method.
+
+### Changed
+
+- Remove exit statement in Redirect::x() method because it is hard to mock, users are recommended to implement their own exit statement.
 
 ## 1.5.1 - 2019-07-07
 

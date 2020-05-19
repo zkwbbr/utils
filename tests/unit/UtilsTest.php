@@ -169,11 +169,10 @@ class UtilsTest extends TestCase
         $baseUrl = 'http://example.com/';
         $method = 'location';
         $seconds = 5;
-        $withExit = false;
 
         // ------------------------------------------------
 
-        Utils\Redirect::x($link, $baseUrl, $method, $seconds, $withExit);
+        Utils\Redirect::x($link, $baseUrl, $method, $seconds);
         $expected = 'location: ' . $baseUrl . $link;
         $actual = \xdebug_get_headers()[0];
         $this->assertEquals($expected, $actual);
@@ -191,11 +190,10 @@ class UtilsTest extends TestCase
         $baseUrl = 'http://example.com/';
         $method = 'refresh';
         $seconds = 5;
-        $withExit = false;
 
         // ------------------------------------------------
 
-        Utils\Redirect::x($link, $baseUrl, $method, $seconds, $withExit);
+        Utils\Redirect::x($link, $baseUrl, $method, $seconds);
         $expected = 'refresh: 5; url=' . $baseUrl . $link;
         $actual = \xdebug_get_headers()[0];
         $this->assertEquals($expected, $actual);
@@ -213,11 +211,10 @@ class UtilsTest extends TestCase
         $baseUrl = null;
         $method = 'refresh';
         $seconds = 5;
-        $withExit = false;
 
         // ------------------------------------------------
 
-        Utils\Redirect::x($link, $baseUrl, $method, $seconds, $withExit);
+        Utils\Redirect::x($link, $baseUrl, $method, $seconds);
         $expected = 'refresh: 5; url=' . $baseUrl . $link;
         $actual = \xdebug_get_headers()[0];
         $this->assertEquals($expected, $actual);
