@@ -151,7 +151,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function test_InputTag_postAlreadySet_pass()
+    public function test_InputTag_autofillFromPost_pass()
     {
         $_POST['foo'] = 'bar';
 
@@ -438,6 +438,22 @@ class UtilsTest extends TestCase
         $actual = Utils\SelectTag::x($array, 'sample');
 
         $expected = '<select id="sample" name="sample"><option value="">- Select -</option><option value="foo">foo</option><option value="bar">bar</option></select>';
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function test_SelectTag_autofillFromPost_pass()
+    {
+        $array = [
+            'foo',
+            'bar',
+        ];
+
+        $_POST['sample'] = 'bar';
+
+        $actual = Utils\SelectTag::x($array, 'sample');
+
+        $expected = '<select id="sample" name="sample"><option value="">- Select -</option><option value="foo">foo</option><option value="bar" selected="selected">bar</option></select>';
 
         $this->assertEquals($expected, $actual);
     }

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.2 - 2020-05-20
+
+### Fixed
+
+- Fix autofill from POST in SelectTag::x().
+
 ## 2.0.1 - 2020-05-20
 
 ### Fixed

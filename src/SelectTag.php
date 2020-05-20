@@ -11,6 +11,10 @@ class SelectTag
 {
     public static function x(array $choices, string $name, ?string $selected = null, bool $showSelectOption = true, bool $multiSelect = false): string
     {
+        // autofill POST value
+        if (\is_null($selected) && isset($_POST[$name]))
+            $selected = $_POST[$name];
+
         // ------------------------------------------------
         // if array is not multidimensional, use basic <select>
         // ------------------------------------------------
