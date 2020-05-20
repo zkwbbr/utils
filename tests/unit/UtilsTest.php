@@ -435,12 +435,26 @@ class UtilsTest extends TestCase
             'bar',
         ];
 
-        $selectTag = Utils\SelectTag::x($array, 'sample');
-
-        // ------------------------------------------------
+        $actual = Utils\SelectTag::x($array, 'sample');
 
         $expected = '<select id="sample" name="sample"><option value="">- Select -</option><option value="foo">foo</option><option value="bar">bar</option></select>';
-        $actual = $selectTag;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function test_SelectTag_selectedElementIsSet_pass()
+    {
+        $array = [
+            'foo',
+            'bar',
+        ];
+
+        $selectedElement = 'bar';
+
+        $actual = Utils\SelectTag::x($array, 'sample', $selectedElement);
+
+        $expected = '<select id="sample" name="sample"><option value="">- Select -</option><option value="foo">foo</option><option value="bar" selected="selected">bar</option></select>';
+
         $this->assertEquals($expected, $actual);
     }
 
@@ -451,12 +465,10 @@ class UtilsTest extends TestCase
             'bar' => ['c', 'd']
         ];
 
-        $selectTag = Utils\SelectTag::x($array, 'sample');
-
-        // ------------------------------------------------
+        $actual = Utils\SelectTag::x($array, 'sample');
 
         $expected = '<select id="sample" name="sample"><option value="">- Select -</option><optgroup label="foo"><option value="a">a</option><option value="b">b</option></optgroup><optgroup label="bar"><option value="c">c</option><option value="d">d</option></optgroup></select>';
-        $actual = $selectTag;
+
         $this->assertEquals($expected, $actual);
     }
 
@@ -473,12 +485,10 @@ class UtilsTest extends TestCase
             ]
         ];
 
-        $selectTag = Utils\SelectTag::x($array, 'streets');
-
-        // ------------------------------------------------
+        $actual = Utils\SelectTag::x($array, 'streets');
 
         $expected = '<select id="streets" name="streets"><option value="">- Select -</option><optgroup label="Protoss"><optgroup label="&nbsp;&nbsp;&nbsp;Gateway"><option value="Zealot">&nbsp;&nbsp;&nbsp;Zealot</option><option value="Stalker">&nbsp;&nbsp;&nbsp;Stalker</option></optgroup><optgroup label="&nbsp;&nbsp;&nbsp;Stargate"><option value="Phoenix">&nbsp;&nbsp;&nbsp;Phoenix</option><option value="Carrier">&nbsp;&nbsp;&nbsp;Carrier</option></optgroup></optgroup><optgroup label="Terran"><optgroup label="&nbsp;&nbsp;&nbsp;Barracks"><option value="Marine">&nbsp;&nbsp;&nbsp;Marine</option><option value="Marauder">&nbsp;&nbsp;&nbsp;Marauder</option></optgroup><optgroup label="&nbsp;&nbsp;&nbsp;Factory"><option value="Seige Tank">&nbsp;&nbsp;&nbsp;Seige Tank</option><option value="Thor">&nbsp;&nbsp;&nbsp;Thor</option></optgroup></optgroup></select>';
-        $actual = $selectTag;
+
         $this->assertEquals($expected, $actual);
     }
 

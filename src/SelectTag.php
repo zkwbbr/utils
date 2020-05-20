@@ -9,7 +9,7 @@ use Zkwbbr\Utils\ForcedAssocArray;
 
 class SelectTag
 {
-    public static function x(array $choices, string $name, ?array $previouData = null, bool $showSelectOption = true, bool $multiSelect = false): string
+    public static function x(array $choices, string $name, ?string $selected = null, bool $showSelectOption = true, bool $multiSelect = false): string
     {
         // ------------------------------------------------
         // if array is not multidimensional, use basic <select>
@@ -24,8 +24,9 @@ class SelectTag
             $str .= ($showSelectOption) ? '<option value="">- Select -</option>' : null;
 
             foreach ($data as $k => $v) {
-                $selected = ($previouData == $k) ? ' selected="selected"' : null;
-                $str .= '<option value="' . $k . '"' . $selected . '>' . $v . '</option>';
+
+                $selectedAtrr = ($selected == $k) ? ' selected="selected"' : null;
+                $str .= '<option value="' . $k . '"' . $selectedAtrr . '>' . $v . '</option>';
             }
 
             return $str .= '</select>';
@@ -50,8 +51,8 @@ class SelectTag
 
                 if (!\is_array($items2)) {
 
-                    $selected = $previouData == $level2 ? ' selected="selected"' : null;
-                    $str .= '<option value="' . $level2 . '"' . $selected . '>' . $items2 . '</option>';
+                    $selectedAtrr = ($selected == $level2) ? ' selected="selected"' : null;
+                    $str .= '<option value="' . $level2 . '"' . $selectedAtrr . '>' . $items2 . '</option>';
 
                 } else {
 
@@ -61,8 +62,8 @@ class SelectTag
 
                     foreach ($items2 as $level3 => $items3) {
 
-                        $selected = $previouData == $level3 ? ' selected="selected"' : null;
-                        $str .= '<option value="' . $level3 . '"' . $selected . '>&nbsp;&nbsp;&nbsp;' . $items3 . '</option>';
+                        $selectedAtrr = ($selected == $level3) ? ' selected="selected"' : null;
+                        $str .= '<option value="' . $level3 . '"' . $selectedAtrr . '>&nbsp;&nbsp;&nbsp;' . $items3 . '</option>';
                     }
 
                     $str .= '</optgroup>';
