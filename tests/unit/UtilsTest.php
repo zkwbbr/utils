@@ -9,17 +9,17 @@ class UtilsTest extends TestCase
 {
     public function test_AdjustedDateTimeByTimeZone_validData_pass()
     {
-        date_default_timezone_set('UTC');
+        \date_default_timezone_set('UTC');
 
         $format = 'Y-m-d H:i:s';
-        $srcDateTime = date($format);
-        $newTimezone = 'America/Los_Angeles';
+        $srcDateTime = \date($format);
+        $newTimezone = 'Asia/Tokyo'; // use country with no DST
 
         $actual = Utils\AdjustedDateTimeByTimeZone::x($srcDateTime, $newTimezone, $format);
 
-        $srcTimestamp = strtotime($srcDateTime);
-        $adjustedTimestamp = strtotime('-7 hours', $srcTimestamp);
-        $expected = date($format, $adjustedTimestamp);
+        $srcTimestamp = \strtotime($srcDateTime);
+        $adjustedTimestamp = \strtotime('+9 hours', $srcTimestamp);
+        $expected = \date($format, $adjustedTimestamp);
 
         $this->assertEquals($expected, $actual);
     }
@@ -229,7 +229,7 @@ class UtilsTest extends TestCase
 
         Utils\Redirect::x($link, $baseUrl, $method, $seconds);
         $expected = 'location: ' . $baseUrl . $link;
-        $actual = \xdebug_get_headers()[0];
+        $actual = \xdebug_get_headers()[1];
         $this->assertEquals($expected, $actual);
     }
 
@@ -250,7 +250,7 @@ class UtilsTest extends TestCase
 
         Utils\Redirect::x($link, $baseUrl, $method, $seconds);
         $expected = 'refresh: 5; url=' . $baseUrl . $link;
-        $actual = \xdebug_get_headers()[0];
+        $actual = \xdebug_get_headers()[1];
         $this->assertEquals($expected, $actual);
     }
 
@@ -271,7 +271,7 @@ class UtilsTest extends TestCase
 
         Utils\Redirect::x($link, $baseUrl, $method, $seconds);
         $expected = 'refresh: 5; url=' . $baseUrl . $link;
-        $actual = \xdebug_get_headers()[0];
+        $actual = \xdebug_get_headers()[1];
         $this->assertEquals($expected, $actual);
     }
 

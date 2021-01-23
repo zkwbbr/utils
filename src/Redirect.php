@@ -27,6 +27,7 @@ class Redirect
             'refresh: ' . $seconds . '; url=' . $link :
             'location: ' . $link;
 
+        \header('Cache-Control: no-store'); // prevent the source page from being cached (some browsers cache it)
         \header($header);
 
         // Note: we should ideally put an exit statement here but it is hard to mock.

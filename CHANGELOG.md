@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2.0.3 - 2021-01-23
+
+### Fixed
+
+- Add "Cache-Control: no-store" in Redirect::x() to prevent some browsers from caching the source URL
+- Use a country that does not use daylight savings in AdjustedDateTimeByTimeZone unit tests
+
 ## 2.0.2 - 2020-05-20
 
 ### Fixed
