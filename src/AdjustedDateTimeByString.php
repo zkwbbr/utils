@@ -20,9 +20,9 @@ class AdjustedDateTimeByString
      */
     public static function x(string $srcDateTime, string $adjustment, ?string $format = null): string
     {
-        $srcTimestamp = strtotime($srcDateTime);
-        $adjustedTimestamp = strtotime($adjustment, $srcTimestamp);
+        $srcTimestamp = (int) \strtotime($srcDateTime);
+        $adjustedTimestamp = (int) \strtotime($adjustment, $srcTimestamp);
 
-        return (is_null($format)) ? (string) $adjustedTimestamp : date($format, $adjustedTimestamp);
+        return (\is_null($format)) ? (string) $adjustedTimestamp : \date($format, $adjustedTimestamp);
     }
 }

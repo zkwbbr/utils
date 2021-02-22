@@ -6,19 +6,22 @@ namespace Zkwbbr\Utils;
 
 class HtmlSpecialCharsArrays
 {
-
     /**
      * Apply \htmlspecialchars() (with ideal default values) in all strings of a one or two-dimensional array
      *
      * Typical useful in database results
      *
-     * @param array $array
+     * @param mixed[] $array
      * @param int $flags
-     * @param type $encoding
-     * @param type $double_encode
-     * @return array
+     * @param string $encoding
+     * @param bool $doubleEncode
+     * @return mixed[]
      */
-    public static function x(array $array, int $flags = ENT_COMPAT | ENT_HTML5, $encoding = 'UTF-8', $double_encode = true): array
+    public static function x(
+        array $array,
+        int $flags = ENT_COMPAT | ENT_HTML5,
+        string $encoding = 'UTF-8',
+        bool $doubleEncode = true): array
     {
         // get first key of $array
         reset($array);
@@ -28,7 +31,7 @@ class HtmlSpecialCharsArrays
         if (is_string($array[$firstKey])) {
             foreach ($array as $k => $v)
                 if (is_string($v))
-                    $array[$k] = htmlspecialchars($v, $flags, $encoding, $double_encode);
+                    $array[$k] = htmlspecialchars($v, $flags, $encoding, $doubleEncode);
             return $array;
         }
 
@@ -36,7 +39,9 @@ class HtmlSpecialCharsArrays
         foreach ($array as $k => $arr)
             foreach ($arr as $k2 => $v)
                 if (is_string($v))
-                    $array[$k][$k2] = htmlspecialchars($v, $flags, $encoding, $double_encode);
+                    $array[$k][$k2] = htmlspecialchars($v, $flags, $encoding, $doubleEncode);
+
         return $array;
     }
+
 }

@@ -6,7 +6,6 @@ namespace Zkwbbr\Utils;
 
 class RandomReadableAlt
 {
-
     /**
      * Returns random alpha numeric characters in uppercase without similar looking characters (0,O,I,1)
      * and alternates between letters and numbers
@@ -30,11 +29,12 @@ class RandomReadableAlt
     /**
      * Get a random key out of array $pool
      *
-     * @param array $pool
+     * @param mixed[] $pool
      * @return int
      */
     private static function randomKey(array $pool): int
     {
         return \random_int(0, \count($pool) - 1);
     }
+
 }

@@ -12,8 +12,8 @@ class ForcedAssocArray
      * If given $array is not associative, make its value as keys, else return
      * it unmodified
      *
-     * @param array $array
-     * @return array
+     * @param mixed[] $array
+     * @return mixed[]
      */
     public static function x(array $array): array
     {

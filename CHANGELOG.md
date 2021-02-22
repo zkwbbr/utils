@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.4 - 2021-02-22
+
+### Fixed
+
+- Make everything pass in PHPStan
+
 ## 2.0.3 - 2021-01-23
 
 ### Fixed

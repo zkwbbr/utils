@@ -9,7 +9,7 @@ class IsArrayMultiAssoc
     /**
      * Check if array is multi-associative
      *
-     * @param array $array
+     * @param mixed[] $array
      * @return bool
      */
     public static function x(array $array): bool

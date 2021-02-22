@@ -12,7 +12,7 @@ class FilesFromDirectory
      *
      * @param string $dir
      * @param string $regex
-     * @return array
+     * @return mixed[]
      */
     public static function x(string $dir, ?string $regex = null): array
     {

@@ -399,7 +399,7 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testRandomReadable_validData_pass()
+    public function test_RandomReadable_validData_pass()
     {
         $random = Utils\RandomReadable::x(5);
         $length = \mb_strlen($random);

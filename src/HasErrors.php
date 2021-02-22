@@ -10,7 +10,7 @@ class HasErrors
     /**
      * Check if an array of fields has error messages
      *
-     * @param array $fields
+     * @param mixed[] $fields
      * @return bool
      */
     public static function x(array $fields): bool

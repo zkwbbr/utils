@@ -6,18 +6,20 @@ namespace Zkwbbr\Utils;
 
 class NullifiedArray
 {
-
     /**
      * Nullify values of $array keys
      *
-     * @param array $array
-     * @return array
+     * @param mixed[] $array
+     * @return mixed[]
      */
     public static function x(array $array): array
     {
+        $na = [];
+
         foreach ($array as $k => $v)
             $na[$k] = null;
 
         return $na;
     }
+
 }

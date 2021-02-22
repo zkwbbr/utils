@@ -13,9 +13,13 @@ class InputTag
      * @param string $type
      * @param string|null $value
      * @param string|null $extra
-     * @$str = string
+     * @return string
      */
-    public static function x(string $name, string $type = 'text', ?string $value = null, ?string $extra = null): string
+    public static function x(
+        string $name,
+        string $type = 'text',
+        ?string $value = null,
+        ?string $extra = null): string
     {
         // autofill POST value
         if (\is_null($value) && isset($_POST[$name]))
@@ -23,6 +27,8 @@ class InputTag
 
         if (!\is_null($extra))
             $extra = ' ' . $extra; // just a pet peeve
+
+        $str = '';
 
         switch ($type) {
 

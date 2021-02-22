@@ -9,7 +9,21 @@ use Zkwbbr\Utils\ForcedAssocArray;
 
 class SelectTag
 {
-    public static function x(array $choices, string $name, ?string $selected = null, bool $showSelectOption = true, bool $multiSelect = false): string
+    /**
+     *
+     * @param mixed[] $choices
+     * @param string $name
+     * @param string|null $selected
+     * @param bool $showSelectOption
+     * @param bool $multiSelect
+     * @return string
+     */
+    public static function x(
+        array $choices,
+        string $name,
+        ?string $selected = null,
+        bool $showSelectOption = true,
+        bool $multiSelect = false): string
     {
         // autofill POST value
         if (\is_null($selected) && isset($_POST[$name]))
