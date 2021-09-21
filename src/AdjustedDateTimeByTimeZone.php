@@ -15,7 +15,7 @@ class AdjustedDateTimeByTimeZone
      * @param string $format
      * @return string
      */
-    public static function x(string $srcDateTime = 'now', string $newTimezone, string $format): string
+    public static function x(string $srcDateTime, string $newTimezone, string $format): string
     {
         $dateTime = new \DateTime($srcDateTime);
         $newTimezone = new \DateTimeZone($newTimezone);

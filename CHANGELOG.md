@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.5 - 2021-09-22
+
+### Fixed
+
+- Remove default value of 'now' in the first param of AdjustedDateTimeByTimeZone::x()
+
 ## 2.0.4 - 2021-02-22
 
 ### Fixed
