@@ -508,4 +508,36 @@ class UtilsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function test_DateDiff_expectPositiveDays_pass()
+    {
+        $dateMinuend = '2021-09-27';
+        $dateSubtrahend = '2021-09-25';
+
+        $diff = Utils\DateDiff::x($dateMinuend, $dateSubtrahend);
+
+        $this->assertEquals(2, $diff);
+    }
+
+    public function test_DateDiff_expectNegativeDays_pass()
+    {
+        $dateMinuend = '2021-09-25';
+        $dateSubtrahend = '2021-09-27';
+
+        $diff = Utils\DateDiff::x($dateMinuend, $dateSubtrahend);
+
+        $this->assertEquals(-2, $diff);
+    }
+
+    public function test_DateDiff_invalidDateInput_throwEx()
+    {
+        $this->expectExceptionMessageMatches('/date_create error/');
+
+        // ------------------------------------------------
+
+        $dateMinuend = '-x';
+        $dateSubtrahend = '-y';
+
+        Utils\DateDiff::x($dateMinuend, $dateSubtrahend);
+    }
+
 }

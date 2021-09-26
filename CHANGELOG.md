@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.0 - 2021-09-27
+
+### Added
+
+- Add DateDiff::x() method.
+
 ## 2.0.5 - 2021-09-22
 
 ### Fixed
