@@ -63,7 +63,7 @@ class SelectTag
 
             $str .= '<optgroup label="' . $level1 . '">';
 
-            $items1 = ForcedAssocArray::x($items1);
+            $items1 = ForcedAssocArray::x((array) $items1);
 
             foreach ($items1 as $level2 => $items2) {
 

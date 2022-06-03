@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.1 - 2022-06-04
+
+### Changed
+
+- Updated dependency phpstan/phpstan to ^1.0
+
 ## 2.1.0 - 2021-09-27
 
 ### Added

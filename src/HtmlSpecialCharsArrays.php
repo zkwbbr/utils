@@ -37,9 +37,9 @@ class HtmlSpecialCharsArrays
 
         // process two-dimensional array
         foreach ($array as $k => $arr)
-            foreach ($arr as $k2 => $v)
+            foreach ($arr as $k2 => $v) /* @phpstan-ignore-line */
                 if (is_string($v))
-                    $array[$k][$k2] = htmlspecialchars($v, $flags, $encoding, $doubleEncode);
+                    $array[$k][$k2] = htmlspecialchars($v, $flags, $encoding, $doubleEncode);  /* @phpstan-ignore-line */
 
         return $array;
     }
