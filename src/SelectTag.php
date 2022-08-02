@@ -36,10 +36,10 @@ class SelectTag
         if (!IsArrayMultiAssoc::x($choices)) {
 
             $data = ForcedAssocArray::x($choices);
-            $multiSelect = $multiSelect ? ' multiple="multiple"' : null;
+            $multiSelect = $multiSelect ? ' multiple' : null;
 
             $str = '<select id="' . $name . '" name="' . $name . '"' . $multiSelect . '>';
-            $str .= ($showSelectOption) ? '<option value="">- Select -</option>' : null;
+            $str .= ($showSelectOption) ? '<option value="" disabled>- Select -</option>' : null;
 
             foreach ($data as $k => $v) {
 
@@ -54,10 +54,10 @@ class SelectTag
         // else, we use <optgroup>. Note: this supports 3 levels, see unit test for sample usage
         // ------------------------------------------------
 
-        $multiSelect = $multiSelect ? ' multiple="multiple"' : null;
+        $multiSelect = $multiSelect ? ' multiple' : null;
 
         $str = '<select id="' . $name . '" name="' . $name . '"' . $multiSelect . '>';
-        $str .= ($showSelectOption) ? '<option value="">- Select -</option>' : null;
+        $str .= ($showSelectOption) ? '<option value="" disabled>- Select -</option>' : null;
 
         foreach ($choices as $level1 => $items1) {
 

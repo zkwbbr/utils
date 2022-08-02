@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2.1.2 - 2022-08-03
+
+### Fixed
+
+- Added "disabled" attribute in the placeholder option tag of SelectTag.
+- Changed multiple="multiple" attribute to just "multiple" in the select tag of SelectTag.
+
 ## 2.1.1 - 2022-06-04
 
 ### Changed
