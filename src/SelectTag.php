@@ -36,14 +36,17 @@ class SelectTag
         if (!IsArrayMultiAssoc::x($choices)) {
 
             $data = ForcedAssocArray::x($choices);
+
             $multiSelect = $multiSelect ? ' multiple' : null;
 
+            $placeHolderAttr = $multiSelect ? ' disabled' : null;
+
             $str = '<select id="' . $name . '" name="' . $name . '"' . $multiSelect . '>';
-            $str .= ($showSelectOption) ? '<option value="" disabled>- Select -</option>' : null;
+            $str .= ($showSelectOption) ? '<option value=""' . $placeHolderAttr . '>- Select -</option>' : null;
 
             foreach ($data as $k => $v) {
 
-                $selectedAtrr = ($selected == $k) ? ' selected="selected"' : null;
+                $selectedAtrr = ($selected == $k) ? ' selected' : null;
                 $str .= '<option value="' . $k . '"' . $selectedAtrr . '>' . $v . '</option>';
             }
 
@@ -56,8 +59,10 @@ class SelectTag
 
         $multiSelect = $multiSelect ? ' multiple' : null;
 
+        $placeHolderAttr = $multiSelect ? ' disabled' : null;
+
         $str = '<select id="' . $name . '" name="' . $name . '"' . $multiSelect . '>';
-        $str .= ($showSelectOption) ? '<option value="" disabled>- Select -</option>' : null;
+        $str .= ($showSelectOption) ? '<option value=""' . $placeHolderAttr . '>- Select -</option>' : null;
 
         foreach ($choices as $level1 => $items1) {
 
@@ -69,7 +74,7 @@ class SelectTag
 
                 if (!\is_array($items2)) {
 
-                    $selectedAtrr = ($selected == $level2) ? ' selected="selected"' : null;
+                    $selectedAtrr = ($selected == $level2) ? ' selected' : null;
                     $str .= '<option value="' . $level2 . '"' . $selectedAtrr . '>' . $items2 . '</option>';
 
                 } else {
@@ -80,7 +85,7 @@ class SelectTag
 
                     foreach ($items2 as $level3 => $items3) {
 
-                        $selectedAtrr = ($selected == $level3) ? ' selected="selected"' : null;
+                        $selectedAtrr = ($selected == $level3) ? ' selected"' : null;
                         $str .= '<option value="' . $level3 . '"' . $selectedAtrr . '>&nbsp;&nbsp;&nbsp;' . $items3 . '</option>';
                     }
 

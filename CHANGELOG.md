@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.3 - 2022-08-03
+
+### Fixed
+
+- Fixed issue with multiselect attribute that causes the "- Select -" placeholder be included in user selection in SelectTag.
+
 ## 2.1.2 - 2022-08-03
 
 ### Fixed
