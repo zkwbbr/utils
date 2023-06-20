@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.4 - 2023-06-21
+
+### Fixed
+
+- Update defuse/php-encryption to 2.4 for PHP 8+ support.
+
 ## 2.1.3 - 2022-08-03
 
 ### Fixed
