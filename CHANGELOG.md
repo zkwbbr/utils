@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.2.0 - 2025-05-15
+
+### Added
+
+- Add multiple schemes in AnchorTag.
+
 ## 2.1.4 - 2023-06-21
 
 ### Fixed

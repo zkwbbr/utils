@@ -308,6 +308,16 @@ class UtilsTest extends TestCase
         $expected = '<a href="' . $link . '">' . $text . '</a>';
         $this->assertEquals($expected, $actual);
 
+        $link = 'https://google.com';
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $link . '">' . $text . '</a>';
+        $this->assertEquals($expected, $actual);
+
+        $link = 'mailto:user@example.com';
+        $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
+        $expected = '<a href="' . $link . '">' . $text . '</a>';
+        $this->assertEquals($expected, $actual);
+
         $text = null;
         $actual = Utils\AnchorTag::x($link, $text, $baseUrl, $extra);
         $expected = '<a href="' . $link . '">' . $link . '</a>';

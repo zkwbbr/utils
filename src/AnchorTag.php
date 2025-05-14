@@ -6,7 +6,6 @@ namespace Zkwbbr\Utils;
 
 class AnchorTag
 {
-
     /**
      * Generate an HTML anchor tag
      *
@@ -15,7 +14,7 @@ class AnchorTag
      *
      * @param string $link
      * @param string|null $text
-     * @param string|null $baseUrl If $link doesn't start with "http", $baseURl will be prefixed to $link (include trailing slash)
+     * @param string|null $baseUrl If $link doesn't start with any of the $schemes, $baseURl will be prefixed to $link (include trailing slash)
      * @param string|null $extra
      * @return string
      */
@@ -26,7 +25,30 @@ class AnchorTag
         if ($extra)
             $extra = ' ' . $extra;
 
-        if (0 !== strpos($link, 'http'))
+        $schemes = [
+            'http:',
+            'https:',
+            'mailto:',
+            'tel:',
+            'sms:',
+            'ftp:',
+            'file:',
+            'data:',
+            'javascript:',
+            'magnet:',
+            'geo:',
+            'about:',
+            'intent:'
+        ];
+
+        $hasScheme = false;
+        foreach ($schemes as $s)
+            if (\stripos($link, $s) === 0) {
+                $hasScheme = true;
+                break;
+        }
+
+        if (!$hasScheme)
             $link = $baseUrl . $link;
 
         return '<a href="' . $link . '"' . $extra . '>' . $text . '</a>';
